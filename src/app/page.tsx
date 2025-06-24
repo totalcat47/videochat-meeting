@@ -3,6 +3,13 @@
 import Head from "next/head";
 import { Button } from "@/components/ui/button";
 
+
+export const metadata = {
+  title: "VideoChat Meeting",
+  description: "Знайомства обличчям до обличчя через відеочат",
+};
+
+
 export default function Page() {
   return (
     <main className="min-h-screen bg-[#F7F9FB] text-[#182337]">
