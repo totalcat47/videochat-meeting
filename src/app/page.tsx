@@ -4,11 +4,6 @@ import Head from "next/head";
 import { Button } from "@/components/ui/button";
 
 
-export const metadata = {
-  title: "VideoChat Meeting",
-  description: "Знайомства обличчям до обличчя через відеочат",
-};
-
 
 export default function Page() {
   return (
