@@ -2,7 +2,7 @@
 
 import Head from "next/head";
 import { useState } from "react";
-import { Button } from "@/components/ui/button";
+import Image from "next/image";
 
 export default function Page() {
   const [openIndex, setOpenIndex] = useState(null);
@@ -55,12 +55,15 @@ export default function Page() {
           {/* Ліва частина – зображення */}
           <div className="w-full md:w-1/2 flex justify-center">
             <div className="relative rounded-3xl shadow-xl overflow-hidden">
-              <img
-                src="./images/hero-section.png"
-                alt="Спілкування у відеочаті"
-                className="w-full h-auto object-cover"
-              />
-              {/* Декоративне розмите коло */}
+
+      <Image
+      src="/images/hero-section.png"
+      alt="Спілкування у відеочаті"
+      className="object-cover"
+      width={1200}      // вкажи реальну ширину зображення
+      height={800}      // вкажи реальну висоту зображення
+      layout="responsive" // щоб адаптувати під ширину контейнера
+    />
               <div className="absolute -top-6 -left-6 w-24 h-24 rounded-full bg-blue-100 blur-2xl opacity-50"></div>
             </div>
           </div>
