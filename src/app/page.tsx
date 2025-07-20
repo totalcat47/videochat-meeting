@@ -5,7 +5,7 @@ import { useState } from "react";
 import Image from "next/image";
 
 export default function Page() {
-  const [openIndex, setOpenIndex] = useState(null);
+  const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   const faqs = [
     {
@@ -35,9 +35,9 @@ export default function Page() {
     },
   ];
 
-  const toggleFAQ = (index) => {
-    setOpenIndex(openIndex === index ? null : index);
-  };
+const toggleFAQ = (index: number) => {
+  setOpenIndex(openIndex === index ? null : index);
+};
 
   return (
     <main className="min-h-screen bg-[#F7F9FB] text-[#182337]">
