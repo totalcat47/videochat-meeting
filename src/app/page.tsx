@@ -1,11 +1,44 @@
 "use client";
 
 import Head from "next/head";
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
 
-
-
 export default function Page() {
+  const [openIndex, setOpenIndex] = useState(null);
+
+  const faqs = [
+    {
+      question: "Що таке Videochat Meeting?",
+      answer:
+        "Це сучасний відеочат для знайомств та спілкування з реальними людьми.",
+    },
+    {
+      question: "Чи безкоштовний сервіс?",
+      answer:
+        "Так, базовий функціонал безкоштовний. Є додаткові преміум-можливості.",
+    },
+    {
+      question: "Чи потрібна реєстрація?",
+      answer:
+        "Можна спробувати без реєстрації, але для повного доступу потрібен акаунт.",
+    },
+    {
+      question: "Чи безпечно користуватися?",
+      answer:
+        "Ми шифруємо трафік та захищаємо ваші дані від сторонніх осіб.",
+    },
+    {
+      question: "На яких пристроях працює?",
+      answer:
+        "Сервіс працює на ПК, планшетах та смартфонах без встановлення додатків.",
+    },
+  ];
+
+  const toggleFAQ = (index) => {
+    setOpenIndex(openIndex === index ? null : index);
+  };
+
   return (
     <main className="min-h-screen bg-[#F7F9FB] text-[#182337]">
       <Head>
@@ -16,22 +49,40 @@ export default function Page() {
         />
       </Head>
 
-      {/* Hero */}
-      <section className="flex flex-col items-center justify-center text-center py-20 px-4 bg-white">
-        <h1 className="text-4xl md:text-6xl font-bold mb-6">Знайомся обличчям до обличчя</h1>
-        <p className="text-lg md:text-xl mb-8 max-w-xl">
-          Миттєві відеозустрічі з реальними людьми по всьому світу
-        </p>
-        <div className="flex gap-4">
-          <Button className="bg-[#0057E7] text-white text-lg px-6 py-3 rounded-2xl shadow-md">
-            Почати зараз
-          </Button>
-          <Button
-            variant="outline"
-            className="text-[#0057E7] text-lg px-6 py-3 rounded-2xl border-[#0057E7]"
-          >
-            Як це працює
-          </Button>
+      {/* HERO */}
+      <section className="relative overflow-hidden py-24 px-6 bg-gradient-to-r from-blue-50 to-white">
+        <div className="container mx-auto flex flex-col md:flex-row items-center gap-16">
+          {/* Ліва частина – зображення */}
+          <div className="w-full md:w-1/2 flex justify-center">
+            <div className="relative rounded-3xl shadow-xl overflow-hidden">
+              <img
+                src="./images/hero-section.png"
+                alt="Спілкування у відеочаті"
+                className="w-full h-auto object-cover"
+              />
+              {/* Декоративне розмите коло */}
+              <div className="absolute -top-6 -left-6 w-24 h-24 rounded-full bg-blue-100 blur-2xl opacity-50"></div>
+            </div>
+          </div>
+
+          {/* Права частина – текст */}
+          <div className="w-full md:w-1/2 text-center md:text-left">
+            {/* Головна назва продукту */}
+            <h1 className="text-5xl md:text-7xl font-extrabold text-blue-600 leading-tight mb-4">
+              Videochat <br /> Meeting
+            </h1>
+
+            {/* Підзаголовок */}
+            <h2 className="text-2xl md:text-4xl font-bold text-gray-900 mb-6">
+              Знайомся обличчям до обличчя
+            </h2>
+
+            {/* Опис */}
+            <p className="text-lg md:text-xl text-gray-600 mb-8 max-w-xl">
+              Сучасний відеочат-застосунок, що працює за принципом чат-рулетки та
+              дозволяє спілкуватися з цікавими людьми у будь-який час.
+            </p>
+          </div>
         </div>
       </section>
 
@@ -41,17 +92,29 @@ export default function Page() {
         <div className="grid md:grid-cols-3 gap-10 max-w-6xl mx-auto">
           {[
             {
-              title: "1. Створіть профіль",
-              desc: "Зареєструйтесь або увійдіть за допомогою соцмереж."
+              title: "✅ Миттєве підключення",
+              desc: "Знайди співрозмовника за лічені секунди без очікувань.",
             },
             {
-              title: "2. Оберіть інтереси",
-              desc: "Наш алгоритм допоможе знайти найближчих за духом людей."
+              title: "✅ Реальні люди",
+              desc: "Живе спілкування без ботів і фейкових акаунтів.",
             },
             {
-              title: "3. Спілкуйтесь у відеочаті",
-              desc: "Розпочніть відеозустріч за одне натискання."
-            }
+              title: "✅ Без обмежень",
+              desc: "Спілкуйся скільки хочеш і з ким хочеш без лімітів.",
+            },
+            {
+              title: "✅ Повна анонімність",
+              desc: "Твої дані залишаються конфіденційними та захищеними.",
+            },
+            {
+              title: "✅ Зручний інтерфейс",
+              desc: "Все максимально просто – один клік, і ти вже у чаті.",
+            },
+            {
+              title: "✅ Спілкування за інтересами",
+              desc: "Обирай теми, які тобі цікаві, і знаходь однодумців.",
+            },
           ].map(({ title, desc }, idx) => (
             <div key={idx} className="bg-white rounded-2xl p-6 shadow-md">
               <h3 className="text-xl font-bold mb-2">{title}</h3>
@@ -61,14 +124,32 @@ export default function Page() {
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="py-20 px-6 bg-white text-center">
-        <h2 className="text-3xl md:text-5xl font-semibold mb-6">
-          Готові зустріти когось особливого?
-        </h2>
-        <Button className="bg-[#0057E7] text-white text-lg px-8 py-4 rounded-2xl shadow-lg">
-          Почати знайомства
-        </Button>
+      {/* FAQ */}
+      <section className="py-20 px-6 bg-white">
+        <div className="max-w-3xl mx-auto text-center">
+          <h2 className="text-3xl md:text-4xl font-bold mb-10">
+            Часті запитання
+          </h2>
+        </div>
+
+        <div className="max-w-3xl mx-auto space-y-4">
+          {faqs.map((item, index) => (
+            <div key={index} className="border rounded-xl shadow-sm">
+              <button
+                className="w-full flex justify-between items-center p-4 text-left text-lg font-medium hover:bg-gray-50 transition"
+                onClick={() => toggleFAQ(index)}
+              >
+                {item.question}
+                <span className="text-blue-500 text-2xl">
+                  {openIndex === index ? "−" : "+"}
+                </span>
+              </button>
+              {openIndex === index && (
+                <div className="p-4 text-gray-600 border-t">{item.answer}</div>
+              )}
+            </div>
+          ))}
+        </div>
       </section>
 
       {/* Footer */}
@@ -91,16 +172,6 @@ export default function Page() {
                 <a href="#">Контакти</a>
               </li>
             </ul>
-          </div>
-          <div>
-            <h4 className="font-semibold mb-2">Підписка</h4>
-            <p className="text-gray-400 mb-2">Отримуйте новини першими</p>
-            <input
-              type="email"
-              placeholder="Ваш Email"
-              className="w-full p-2 rounded text-black mb-2"
-            />
-            <Button className="bg-[#0057E7] w-full">Підписатись</Button>
           </div>
         </div>
       </footer>
